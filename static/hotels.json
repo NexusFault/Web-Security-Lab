@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Hotel Sunshine",
+        "description": "Great hotel in the city center",
+        "price": 100
+    },
+    {
+        "id": 2,
+        "name": "Grand Plaza",
+        "description": "5 stars, pool and spa",
+        "price": 250
+    },
+    {
+        "id": 3,
+        "name": "Cozy Inn",
+        "description": "Cozy mini hotel",
+        "price": 50
+    },
+    {
+        "id": 4,
+        "name": "Seaside Resort",
+        "description": "Near the beach",
+        "price": 180
+    },
+    {
+        "id": 5,
+        "name": "Mountain View",
+        "description": "Panoramic mountain view",
+        "price": 120
+    }
+]
