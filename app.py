@@ -1,11 +1,14 @@
 from flask import Flask, render_template, url_for, request, jsonify
 import json
+import os
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 @app.route("/xss/reflected")
 def xss_reflected():
@@ -30,6 +33,29 @@ def xss_reflected():
     )
 
 
+@app.route("/xss/storage", methods=["GET", "POST"])
+def xss_storage():
+        
+    if request.method == "POST":
+        
+        name = request.form.get('name')
+        text = request.form.get("text")
+        
+        if os.path.exists("static/comments.json"):
+            with open("static/comments.json", "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = []
+
+        data.append({"name": name, "text":text})
+
+        with open("static/comments.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+    
+    with open("static/comments.json", "r", encoding="utf-8") as f:
+        data = json.load(f) 
+        
+    return render_template("XSS/storage-xss.html", comments=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
