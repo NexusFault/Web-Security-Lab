@@ -7,61 +7,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="top-banner">
-        <h1>Web Security Labs</h1>
-        <span class="subtitle">vulnerability testing</span>
-    </div>
-
-    <div class="sidebar">
-        <nav class="buttons">
-            <div class="xss-dropdown">
-                <button data-form="xss">XSS</button>
-                <div class="xss-submenu">
-                    <button data-form="reflected-xss">Reflected XSS</button>
-                    <button data-form="storage-xss">Storage XSS</button>
-                    <button data-form="dom-xss">DOM XSS</button>
-                </div>
-            </div>
-            <button data-form="csrf">CSRF</button>
-            <button data-form="sql">SQL</button>
-        </nav>
-    </div>
-
+    <div id="layout"></div>
     <div class="content">
         <div class="form-container" id="xss">
             <h2>XSS Testing</h2>
         </div>
-
-        <div class="form-container" id="reflected-xss">
-            <h2>Reflected XSS</h2>
-            <div class="reflected-content">
-                <div class="search-section">
-                    <p>Enter search data:</p>
-                    <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Enter query...">
-                        <button id="search-btn">Search</button>
-                    </div>
-                    <div class="search-result" id="search-result">
-                        <p>Search results:</p>
-                    </div>
-                </div>
-                <div class="hotels-section" id="hotels-list"></div>
-            </div>
+        <div class="form-container" id="storage-xss">   
         </div>
-
         <div class="form-container" id="csrf">
             <h2>CSRF Testing</h2>
         </div>
-
         <div class="form-container" id="sql">
             <h2>SQL Injection</h2>
         </div>
     </div>
-
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script>
-        window.searchQuery = "{{ search_query }}";
-        window.serverHotels = {{ hotels | tojson }};
-    </script>
+    <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
 </body>
 </html>

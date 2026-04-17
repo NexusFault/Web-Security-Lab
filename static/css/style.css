@@ -25,19 +25,7 @@ body {
     color: #fff;
     font-size: 18px;
     font-weight: normal;
-    padding-left: 25px
-}
-
-.top-banner .subtitle {
-    color: #95a5a6;
-    font-size: 12px;
-}
-
-.top-banner h1 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: normal;
-    padding-left: 25px
+    padding-left: 25px;
 }
 
 .top-banner .subtitle {
@@ -52,7 +40,6 @@ body {
     top: 50px;
     bottom: 0;
     width: 150px;
-    margin-top: 0;
 }
 
 .buttons {
@@ -72,12 +59,7 @@ body {
     text-align: left;
 }
 
-.buttons > .xss-dropdown > button {
-    border-radius: 4px 4px 0 0;
-}
-
-.buttons > button:last-child {
-    border-radius: 0 0 4px 4px;
+.buttons button:last-child {
     border-bottom: none;
 }
 
@@ -85,6 +67,10 @@ body {
 .buttons button.active {
     background: #1abc9c;
     color: #fff;
+}
+
+.xss-dropdown {
+    position: relative;
 }
 
 .xss-dropdown > button {
@@ -112,10 +98,6 @@ body {
 .xss-dropdown > button:hover {
     background: #1abc9c;
     color: #fff;
-}
-
-.xss-dropdown {
-    position: relative;
 }
 
 .xss-submenu {
@@ -160,9 +142,6 @@ body {
     margin-left: 150px;
     margin-top: 50px;
     padding: 30px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
 }
 
 .form-container {
@@ -171,7 +150,7 @@ body {
     border-radius: 8px;
     padding: 25px;
     width: 100%;
-    max-width: 500px;
+    max-width: 750px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -182,20 +161,46 @@ body {
 .form-container h2 {
     font-size: 16px;
     color: #2c3e50;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid #1abc9c;
+}
+
+.xss-layout {
+    display: flex;
+    gap: 20px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-side {
+    flex: 1;
+    min-width: 300px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
 }
 
 .search-box {
     display: flex;
     gap: 10px;
-    margin: 15px 0;
 }
 
 .search-box input {
     flex: 1;
-    padding: 10px 12px;
+    padding: 10px 50px;
     border: 1px solid #bdc3c7;
     border-radius: 4px;
     font-size: 14px;
@@ -225,67 +230,17 @@ body {
 
 .search-result p {
     color: #7f8c8d;
-    margin-bottom: 10px;
 }
 
-.not-found {
-    color: #e74c3c;
-    font-weight: bold;
-    padding: 10px;
-}
-
-.reflected-content {
-    display: flex;
-    gap: 20px;
-}
-
-.search-section {
-    flex: 1;
-}
-
-.hotels-section {
-    flex: 1;
+.hotels-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 5px;
+    gap: 15px;
 }
 
-.hotels-section::-webkit-scrollbar {
-    width: 6px;
-}
-
-.hotels-section::-webkit-scrollbar-track {
-    background: #ecf0f1;
-    border-radius: 3px;
-}
-
-.hotels-section::-webkit-scrollbar-thumb {
-    background: #bdc3c7;
-    border-radius: 3px;
-}
-
-.hotels-section .hotel-card {
+.hotel-card {
     background: #fff;
-    border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.hotels-section .hotel-card h3 {
-    color: #2c3e50;
-    margin-bottom: 5px;
-}
-
-.hotels-section .hotel-card p {
-    color: #7f8c8d;
-    font-size: 13px;
-}
-
-.hotels-section .hotel-card .price {
-    color: #1abc9c;
-    font-weight: bold;
-    margin-top: 8px;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 }
