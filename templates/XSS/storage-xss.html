@@ -31,24 +31,33 @@
                 </div>
                 <div class="right-side">
                     <h3>Comments</h3>
-                    <div class="comments-list">
-                        {% if comments %}
-                            {% for comment in comments %}
-                                <div class="comment-card">
-                                    <div class="comment-header">
-                                        <span class="comment-name">{{ comment.name }}</span>
-                                    </div>
-                                    <p class="comment-text">{{ comment.text }}</p>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <p class="no-comments">No comments yet. Be the first!</p>
-                        {% endif %}
-                    </div>
+                    <div class="comments-list" id="comments-list"></div>
                 </div>
             </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+    <script>
+        const comments = {{ data|tojson }};
+
+        const commentsList = document.getElementById("comments-list");
+
+        if (comments.length > 0) {
+            let html = "";
+            comments.forEach(comment => {
+                html += `
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <span class="comment-name">${comment.name}</span>
+                        </div>
+                        <p class="comment-text">${comment.text}</p>
+                    </div>
+                `;
+            });
+            commentsList.innerHTML = html;
+        } else {
+            commentsList.innerHTML = `<p class="no-comments">No comments yet. Be the first!</p>`;
+        }
+    </script>
 </body>
 </html>

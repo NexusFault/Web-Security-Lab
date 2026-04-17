@@ -55,7 +55,7 @@ def xss_storage():
     with open("static/comments.json", "r", encoding="utf-8") as f:
         data = json.load(f) 
         
-    return render_template("XSS/storage-xss.html", comments=data)
+    return render_template("XSS/storage-xss.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
