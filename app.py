@@ -57,5 +57,10 @@ def xss_storage():
         
     return render_template("XSS/storage-xss.html", data=data)
 
+
+@app.route("/xss/dom")
+def dom_xss():
+    return render_template("XSS/dom-xss.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
