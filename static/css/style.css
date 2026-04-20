@@ -69,13 +69,13 @@ body {
     color: #fff;
 }
 
-
-
-.xss-dropdown {
+.xss-dropdown,
+.sql-dropdown {
     position: relative;
 }
 
-.xss-dropdown > button {
+.xss-dropdown > button,
+.sql-dropdown > button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,18 +91,21 @@ body {
     border-radius: 4px 4px 0 0;
 }
 
-.xss-dropdown > button::after {
+.xss-dropdown > button::after,
+.sql-dropdown > button::after {
     content: "▼";
     font-size: 8px;
     margin-left: 5px;
 }
 
-.xss-dropdown > button:hover {
+.xss-dropdown > button:hover,
+.sql-dropdown > button:hover {
     background: #1abc9c;
     color: #fff;
 }
 
-.xss-submenu {
+.xss-submenu,
+.sql-submenu {
     display: none;
     position: absolute;
     left: 100%;
@@ -114,11 +117,13 @@ body {
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
-.xss-dropdown:hover .xss-submenu {
+.xss-dropdown:hover .xss-submenu,
+.sql-dropdown:hover .sql-submenu {
     display: flex;
 }
 
-.xss-submenu button {
+.xss-submenu button,
+.sql-submenu button {
     padding: 12px 15px;
     background: #2c3e50;
     border: none;
@@ -131,11 +136,13 @@ body {
     min-width: 120px;
 }
 
-.xss-submenu button:last-child {
+.xss-submenu button:last-child,
+.sql-submenu button:last-child {
     border-bottom: none;
 }
 
-.xss-submenu button:hover {
+.xss-submenu button:hover,
+.sql-submenu button:hover {
     background: #1abc9c;
     color: #fff;
 }

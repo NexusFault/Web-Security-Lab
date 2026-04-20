@@ -17,8 +17,13 @@ const createLayout = () => {
                         <button data-form="dom">DOM XSS</button>
                     </div>
                 </div>
+                <div class="sql-dropdown">
+                    <button>SQLi</button>
+                    <div class="sql-submenu">
+                        <button data-form="login">SQLi login</button>
+                    </div>
+                </div>
                 <button data-form="csrf">CSRF</button>
-                <button data-form="sql">SQL</button>
             </nav>
         </div>
     `;
@@ -29,6 +34,14 @@ const createLayout = () => {
             window.location.href = `/xss/${formId}`;
         });
     });
+
+    document.querySelectorAll('.sql-submenu button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const formId = btn.getAttribute('data-form');
+            window.location.href = `/sqli/${formId}`;
+        });
+    });
+
 };
 
 document.addEventListener('DOMContentLoaded', createLayout);

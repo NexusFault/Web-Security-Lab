@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, request, jsonify
+import mysql.connector
+from mysql.connector import Error
+
 import json
 import os
 
-app = Flask(__name__)
-
+app = Flask(__name__)    
 
 @app.route("/")
 def home():
@@ -61,6 +63,42 @@ def xss_storage():
 @app.route("/xss/dom")
 def dom_xss():
     return render_template("XSS/dom-xss.html")
+
+
+@app.route("/sqli/login", methods=['GET', 'POST'])
+def sqli_login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if not username or not password:
+            return render_template("SQLi/sqli-login.html", both="Please enter both username and password")
+        
+        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+        
+        con = mysql.connector.connect(
+            host="localhost",
+            user="root",           # Enter your own username for the database
+            password="password123",       # Enter the user's password from the database
+            database="mydb",       # Enter the name of the database you created
+            port=3306
+        )
+        
+        cursor = con.cursor()
+        cursor.execute(query)
+        result = cursor.fetchone()
+        
+        cursor.close()
+        con.close()
+        
+        if result:
+            success_message = f"Login successful! Welcome {username}"
+            return render_template("SQLi/sqli-login.html", success=success_message)
+        else:
+            error_message = "Login failed! Invalid credentials"
+            return render_template("SQLi/sqli-login.html", error=error_message)
+ 
+    return render_template("SQLi/sqli-login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
