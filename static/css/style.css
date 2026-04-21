@@ -8,6 +8,12 @@ body {
     background: white;
 }
 
+.content {
+    margin-left: 150px;
+    margin-top: 50px;
+    padding: 30px;
+}
+
 .top-banner {
     position: fixed;
     top: 0;
@@ -67,6 +73,28 @@ body {
 .buttons button.active {
     background: #1abc9c;
     color: #fff;
+}
+
+.form-container {
+    display: none;
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    width: 100%;
+    max-width: 750px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-container.active {
+    display: block;
+}
+
+.form-container h2 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1abc9c;
 }
 
 .xss-dropdown,
@@ -145,34 +173,6 @@ body {
 .sql-submenu button:hover {
     background: #1abc9c;
     color: #fff;
-}
-
-.content {
-    margin-left: 150px;
-    margin-top: 50px;
-    padding: 30px;
-}
-
-.form-container {
-    display: none;
-    background: white;
-    border-radius: 8px;
-    padding: 25px;
-    width: 100%;
-    max-width: 750px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.form-container.active {
-    display: block;
-}
-
-.form-container h2 {
-    font-size: 16px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #1abc9c;
 }
 
 .xss-layout {
@@ -350,6 +350,48 @@ body {
     font-size: 14px;
 }
 
+.button-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button.login {
+     margin-left: auto;
+}
+
 .button:hover {
     background: #16a085;
+}
+
+.product-type{
+    margin-top: 50px;
+    display: flex; 
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50
+}
+
+.product-card {
+    border: 2px solid #1abc9c; 
+    border-radius: 10px;       
+    padding: 20px;             
+    max-width: 600px;          
+    margin: 40px 50px;         
+    background-color: #f9f9f9; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.product-card .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.product-card .description {
+    font-size: 16px;
+    color: #34495e;
+    line-height: 1.5;
 }

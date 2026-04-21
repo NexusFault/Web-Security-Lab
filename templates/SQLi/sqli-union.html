@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Security Lab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+    <body>
+        <div id="layout"></div>
+            <div class="content">
+                <div class="form-container active">
+                    <h2>SQLi UNION</h2>
+                    <div class="button-row">
+                        <form action="" method="GET">
+                            <input type="hidden" name="product" value="fruits">
+                            <button class="button">Fruits</button>
+                        </form>
+                        <form action="" method="GET">
+                            <input type="hidden" name="product" value="vegetables">
+                            <button class="button">Vegetables</button>
+                        </form>
+                        <form action="" method="GET">
+                            <input type="hidden" name="product" value="grains">
+                            <button class="button">Grains</button>
+                        </form>
+                        <form action="" method="GET">
+                            <input type="hidden" name="product" value="proteins">
+                            <button class="button">Proteins / Legumes</button>
+                        </form>
+                        <form action="/sqli/union/login_page_url" method="GET">
+                            <button class="button login">Login</button>
+                        </form>
+                    </div>
+                <div class="product-type">
+                    {{type}}
+                </div>
+                <div class="product-card">
+                    <div class="title">
+                        {{title}}
+                    </div>
+                    <div class="description">
+                        {{description}}
+                    </div>
+                </div>
+            </div>
+        <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+    </body>
+</html>

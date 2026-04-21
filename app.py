@@ -100,5 +100,15 @@ def sqli_login():
  
     return render_template("SQLi/sqli-login.html")
 
+
+@app.route("/sqli/union")
+def sqli_union():
+    products_query = request.args.get("products", "")
+    products_normalized = products_query.lower().strip()
+    
+    
+    
+    return render_template("sqli/sqli-union.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
