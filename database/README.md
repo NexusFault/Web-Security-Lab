@@ -18,20 +18,18 @@ pip install mysql-connector-python
 
 ## **2. Create the Database**
 
-### 1. Open your MySQL/MariaDB client
+### 1. Open your MySQL/MariaDB client:
 ```bash
 mysql -u root -p
 ```
 
-### 2. Create a new database. **Do not include the .sql extension** in the database name
+### 2. Create a new database:
 ```sql
 CREATE DATABASE sqli_union;
 EXIT;
 ```
-Replace `sqli_union` with the name you want to use (must match what you’ll configure in `app.py`).
 
-### 3. Import the .sql File
-
+### 3. Import the .sql File:
 ```bash
 mysql -u root -p sqli_union < /path/to/sqli_union.sql
 ```
@@ -39,7 +37,6 @@ mysql -u root -p sqli_union < /path/to/sqli_union.sql
 ## 3. Configure app.py
 
 ### 1. Open app.py and locate the database connection block:
-
 ```python
 con = mysql.connector.connect(
     host="localhost",          # Usually localhost
@@ -51,7 +48,6 @@ con = mysql.connector.connect(
 ```
 
 ### 2. Update it with your own credentials:
-
 ```python
 con = mysql.connector.connect(
     host="localhost",          # Usually localhost
@@ -62,10 +58,11 @@ con = mysql.connector.connect(
 )
 ```
 
+Do the same with the other databases.
+
 ## 4. Start the Application
 
 ### 1. Run `app.py`:
-
 ```bash
 python app.py
 ```
