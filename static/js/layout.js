@@ -21,6 +21,7 @@ const createLayout = () => {
                     <button>SQLi</button>
                     <div class="sql-submenu">
                         <button data-form="login">SQLi login</button>
+                        <button data-form="union">SQLi Union</button>
                     </div>
                 </div>
                 <button data-form="csrf">CSRF</button>

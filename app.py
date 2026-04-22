@@ -78,9 +78,9 @@ def sqli_login():
         
         con = mysql.connector.connect(
             host="localhost",
-            user="root",           # Enter your own username for the database
-            password="password123",       # Enter the user's password from the database
-            database="mydb",       # Enter the name of the database you created
+            user="root",
+            password="password123",
+            database="SQLi_LOGIN",
             port=3306
         )
         
@@ -101,14 +101,35 @@ def sqli_login():
     return render_template("SQLi/sqli-login.html")
 
 
-@app.route("/sqli/union")
+@app.route("/sqli/union", methods=['GET'])
 def sqli_union():
-    products_query = request.args.get("products", "")
-    products_normalized = products_query.lower().strip()
+    category_query = request.args.get("category")
     
+    con = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="password123",
+        database="sqli_union",
+        port=3306
+    )
     
+    if category_query:
+        query = f"SELECT title, description FROM products WHERE category = '{category_query}'"
+    else:
+        query = "SELECT * FROM products"
+        
+    cursor = con.cursor()
+    cursor.execute(query)
+    results = cursor.fetchall()
+    
+    cursor.close()
+    con.close()
+    
+    if results:
+        return render_template("sqli/sqli-union.html", query_param=category_query, results=results)
     
     return render_template("sqli/sqli-union.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

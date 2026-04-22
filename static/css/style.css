@@ -341,6 +341,7 @@ body {
 }
 
 .button {
+    display: flex;
     padding: 10px 25px;
     background: #1abc9c;
     border: none;
@@ -356,8 +357,8 @@ body {
     gap: 10px;
 }
 
-.button.login {
-     margin-left: auto;
+.button .login {
+    margin-left: auto;
 }
 
 .button:hover {
@@ -367,7 +368,7 @@ body {
 .product-type{
     margin-top: 50px;
     display: flex; 
-    justify-content: center;
+    justify-content: left;
     font-size: 24px;
     font-weight: bold;
     color: #2c3e50

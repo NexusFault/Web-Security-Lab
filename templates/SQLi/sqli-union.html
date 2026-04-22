@@ -10,39 +10,45 @@
         <div id="layout"></div>
             <div class="content">
                 <div class="form-container active">
+                    Title: You know that there is another table in this database called "users", display it<br><br>
                     <h2>SQLi UNION</h2>
                     <div class="button-row">
                         <form action="" method="GET">
-                            <input type="hidden" name="product" value="fruits">
+                            <button class="button">All</button>
+                        </form>
+                        <form action="" method="GET">
+                            <input type="hidden" name="category" value="fruits">
                             <button class="button">Fruits</button>
                         </form>
                         <form action="" method="GET">
-                            <input type="hidden" name="product" value="vegetables">
+                            <input type="hidden" name="category" value="vegetables">
                             <button class="button">Vegetables</button>
                         </form>
                         <form action="" method="GET">
-                            <input type="hidden" name="product" value="grains">
+                            <input type="hidden" name="category" value="grains">
                             <button class="button">Grains</button>
                         </form>
                         <form action="" method="GET">
-                            <input type="hidden" name="product" value="proteins">
-                            <button class="button">Proteins / Legumes</button>
-                        </form>
-                        <form action="/sqli/union/login_page_url" method="GET">
-                            <button class="button login">Login</button>
+                            <input type="hidden" name="category" value="legumes">
+                            <button class="button">Legumes</button>
                         </form>
                     </div>
-                <div class="product-type">
-                    {{type}}
-                </div>
-                <div class="product-card">
-                    <div class="title">
-                        {{title}}
-                    </div>
-                    <div class="description">
-                        {{description}}
-                    </div>
-                </div>
+                {% for product in results %}
+                    {% if query_param %}
+                        <div class="product-card">
+                            <div class="title">{{ product[0] }}</div>
+                            <div class="description">{{ product[1] }}</div>
+                        </div>
+                    {% else %}
+                        <div class="product-type">
+                            Category: {{ product[0] }}
+                        </div>
+                        <div class="product-card">
+                            <div class="title">{{ product[1] }}</div>
+                            <div class="description">{{ product[2] }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
     </body>
