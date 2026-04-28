@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Security Lab</title>
+    <title>SQLi Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sqli.css') }}">
 </head>
 <body>
     <div id="layout"></div>
     <div class="content">
         <div class="form-container active">
-            <h2>SQLi LOGIN</h2>
-            <p>Given username: admin</p><br>
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input name="username" type="text">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input name="password" type="text">
-                </div>
-                <button type="submit" class="button">login</button>
-                <br><br><br>
-                {% if success %}
-                    <p style="color: green; font-weight: bold;">{{ success | safe }}</p>
-                {% endif %}
-                {% if error %}
-                    <p style="color: red; font-weight: bold;">{{ error | safe }}</p>
-                {% endif %}
-                {% if both %}
-                    <p style="font-weight: bold;">{{ both | safe }}</p>
-                {% endif %}
-            </form>
+            <div class="sqli-page">
+                <h2>SQLi Login</h2>
+                <p class="hint">Given username: <strong>admin</strong></p>
+                <form action="" method="POST" class="login-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input name="username" type="text" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input name="password" type="text" placeholder="Enter password">
+                    </div>
+                    <button type="submit">Login</button>
+                    {% if success %}
+                        <div class="result success">{{ success | safe }}</div>
+                    {% endif %}
+                    {% if error %}
+                        <div class="result error">{{ error | safe }}</div>
+                    {% endif %}
+                    {% if both %}
+                        <div class="result info">{{ both | safe }}</div>
+                    {% endif %}
+                </form>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>

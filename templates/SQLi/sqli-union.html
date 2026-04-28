@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Security Lab</title>
+    <title>SQLi UNION</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sqli.css') }}">
 </head>
-    <body>
-        <div id="layout"></div>
-            <div class="content">
-                <div class="form-container active">
-                    Title: You know that there is another table in this database called "users", display it<br><br>
-                    <h2>SQLi UNION</h2>
-                    <div class="button-row">
-                        <form action="" method="GET">
-                            <button class="button">All</button>
-                        </form>
-                        <form action="" method="GET">
-                            <input type="hidden" name="category" value="fruits">
-                            <button class="button">Fruits</button>
-                        </form>
-                        <form action="" method="GET">
-                            <input type="hidden" name="category" value="vegetables">
-                            <button class="button">Vegetables</button>
-                        </form>
-                        <form action="" method="GET">
-                            <input type="hidden" name="category" value="grains">
-                            <button class="button">Grains</button>
-                        </form>
-                        <form action="" method="GET">
-                            <input type="hidden" name="category" value="legumes">
-                            <button class="button">Legumes</button>
-                        </form>
-                    </div>
-                {% for product in results %}
+<body>
+    <div id="layout"></div>
+    <div class="content">
+        <div class="form-container active">
+            <div class="sqli-page">
+                <h2>SQLi UNION</h2>
+                <p class="hint">You know that there is another table called "users" in this database. Display it!</p>
+                <div class="category-tabs">
+                    <a href="?category=" class="{{ 'active' if not request.args.get('category') else '' }}">All</a>
+                    <a href="?category=fruits" class="{{ 'active' if request.args.get('category') == 'fruits' else '' }}">Fruits</a>
+                    <a href="?category=vegetables" class="{{ 'active' if request.args.get('category') == 'vegetables' else '' }}">Vegetables</a>
+                    <a href="?category=grains" class="{{ 'active' if request.args.get('category') == 'grains' else '' }}">Grains</a>
+                    <a href="?category=legumes" class="{{ 'active' if request.args.get('category') == 'legumes' else '' }}">Legumes</a>
+                </div>
+                <div class="products-list">
                     {% if query_param %}
-                        <div class="product-card">
-                            <div class="title">{{ product[0] }}</div>
-                            <div class="description">{{ product[1] }}</div>
-                        </div>
+                        {% for product in results %}
+                            <div class="product-card">
+                                <div class="product-name">{{ product[0] }}</div>
+                                <div class="product-desc">{{ product[1] }}</div>
+                            </div>
+                        {% endfor %}
                     {% else %}
-                        <div class="product-type">
-                            Category: {{ product[0] }}
-                        </div>
-                        <div class="product-card">
-                            <div class="title">{{ product[1] }}</div>
-                            <div class="description">{{ product[2] }}</div>
-                        </div>
+                        {% for product in results %}
+                            <div class="category-header">Category: {{ product[0] }}</div>
+                            <div class="product-card">
+                                <div class="product-name">{{ product[1] }}</div>
+                                <div class="product-desc">{{ product[2] }}</div>
+                            </div>
+                        {% endfor %}
                     {% endif %}
-                {% endfor %}
+                </div>
             </div>
-        <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
-    </body>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+</body>
 </html>

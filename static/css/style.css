@@ -1,26 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: white;
-}
-
-.content {
-    margin-left: 150px;
-    margin-top: 50px;
-    padding: 30px;
-}
-
 .top-banner {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    height: 50px;
     background: #2c3e50;
-    padding: 15px 30px;
+    padding: 0 30px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -48,13 +33,13 @@ body {
     width: 150px;
 }
 
-.buttons {
+.sidebar-nav {
     display: flex;
     flex-direction: column;
     padding: 15px 10px;
 }
 
-.buttons button {
+.sidebar-nav button {
     padding: 12px 15px;
     background: #2c3e50;
     border: none;
@@ -63,47 +48,24 @@ body {
     font-size: 13px;
     color: #bdc3c7;
     text-align: left;
+    transition: all 0.2s;
 }
 
-.buttons button:last-child {
+.sidebar-nav button:last-child {
     border-bottom: none;
 }
 
-.buttons button:hover,
-.buttons button.active {
+.sidebar-nav button:hover,
+.sidebar-nav button.active {
     background: #1abc9c;
     color: #fff;
 }
 
-.form-container {
-    display: none;
-    background: white;
-    border-radius: 8px;
-    padding: 25px;
-    width: 100%;
-    max-width: 750px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.form-container.active {
-    display: block;
-}
-
-.form-container h2 {
-    font-size: 16px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #1abc9c;
-}
-
-.xss-dropdown,
-.sql-dropdown {
+.dropdown {
     position: relative;
 }
 
-.xss-dropdown > button,
-.sql-dropdown > button {
+.dropdown > button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -117,23 +79,21 @@ body {
     color: #bdc3c7;
     text-align: left;
     border-radius: 4px 4px 0 0;
+    transition: all 0.2s;
 }
 
-.xss-dropdown > button::after,
-.sql-dropdown > button::after {
+.dropdown > button::after {
     content: "▼";
     font-size: 8px;
     margin-left: 5px;
 }
 
-.xss-dropdown > button:hover,
-.sql-dropdown > button:hover {
+.dropdown > button:hover {
     background: #1abc9c;
     color: #fff;
 }
 
-.xss-submenu,
-.sql-submenu {
+.dropdown-menu {
     display: none;
     position: absolute;
     left: 100%;
@@ -143,15 +103,14 @@ body {
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100;
 }
 
-.xss-dropdown:hover .xss-submenu,
-.sql-dropdown:hover .sql-submenu {
+.dropdown:hover .dropdown-menu {
     display: flex;
 }
 
-.xss-submenu button,
-.sql-submenu button {
+.dropdown-menu button {
     padding: 12px 15px;
     background: #2c3e50;
     border: none;
@@ -162,237 +121,14 @@ body {
     text-align: left;
     white-space: nowrap;
     min-width: 120px;
+    transition: all 0.2s;
 }
 
-.xss-submenu button:last-child,
-.sql-submenu button:last-child {
+.dropdown-menu button:last-child {
     border-bottom: none;
 }
 
-.xss-submenu button:hover,
-.sql-submenu button:hover {
+.dropdown-menu button:hover {
     background: #1abc9c;
     color: #fff;
-}
-
-.xss-layout {
-    display: flex;
-    gap: 20px;
-}
-
-.left-side {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.right-side {
-    flex: 1;
-    min-width: 300px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #2c3e50;
-    font-weight: 500;
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-}
-
-.search-box input {
-    flex: 1;
-    padding: 10px 50px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.search-box button {
-    padding: 10px 20px;
-    background: #1abc9c;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.search-box button:hover {
-    background: #16a085;
-}
-
-.search-result {
-    margin-top: 15px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 4px;
-    min-height: 50px;
-}
-
-.search-result p {
-    color: #7f8c8d;
-}
-
-.hotels-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.hotel-card {
-    background: white;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-}
-
-.storage-layout {
-    display: flex;
-    gap: 30px;
-}
-
-.comment-form {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 6px;
-    min-width: 280px;
-}
-
-.comment-form h3 {
-    margin-bottom: 15px;
-    color: #2c3e50;
-}
-
-.comment-form input,
-.comment-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
-
-.comment-form textarea {
-    resize: vertical;
-}
-
-.submit-btn {
-    padding: 10px 25px;
-    background: #1abc9c;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.submit-btn:hover {
-    background: #16a085;
-}
-
-.comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.comment-card {
-    background: white;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-}
-
-.comment-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.comment-name {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.comment-date {
-    color: #95a5a6;
-    font-size: 12px;
-}
-
-.comment-text {
-    color: #34495e;
-    line-height: 1.5;
-}
-
-.no-comments {
-    color: #7f8c8d;
-    font-style: italic;
-}
-
-.button {
-    display: flex;
-    padding: 10px 25px;
-    background: #1abc9c;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.button-row{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.button .login {
-    margin-left: auto;
-}
-
-.button:hover {
-    background: #16a085;
-}
-
-.product-type{
-    margin-top: 50px;
-    display: flex; 
-    justify-content: left;
-    font-size: 24px;
-    font-weight: bold;
-    color: #2c3e50
-}
-
-.product-card {
-    border: 2px solid #1abc9c; 
-    border-radius: 10px;       
-    padding: 20px;             
-    max-width: 600px;          
-    margin: 40px 50px;         
-    background-color: #f9f9f9; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-}
-
-.product-card .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-.product-card .description {
-    font-size: 16px;
-    color: #34495e;
-    line-height: 1.5;
 }

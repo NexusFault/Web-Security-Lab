@@ -8,20 +8,20 @@ const createLayout = () => {
         </div>
 
         <div class="sidebar">
-            <nav class="buttons">
-                <div class="xss-dropdown">
+            <nav class="sidebar-nav">
+                <div class="dropdown">
                     <button>XSS</button>
-                    <div class="xss-submenu">
-                        <button data-form="reflected">Reflected XSS</button>
-                        <button data-form="storage">Storage XSS</button>
-                        <button data-form="dom">DOM XSS</button>
+                    <div class="dropdown-menu">
+                        <button data-form="xss/reflected">Reflected XSS</button>
+                        <button data-form="xss/storage">Storage XSS</button>
+                        <button data-form="xss/dom">DOM XSS</button>
                     </div>
                 </div>
-                <div class="sql-dropdown">
+                <div class="dropdown">
                     <button>SQLi</button>
-                    <div class="sql-submenu">
-                        <button data-form="login">SQLi login</button>
-                        <button data-form="union">SQLi Union</button>
+                    <div class="dropdown-menu">
+                        <button data-form="sqli/login">SQLi Login</button>
+                        <button data-form="sqli/union">SQLi Union</button>
                     </div>
                 </div>
                 <button data-form="csrf">CSRF</button>
@@ -29,20 +29,19 @@ const createLayout = () => {
         </div>
     `;
 
-    document.querySelectorAll('.xss-submenu button').forEach(btn => {
+    document.querySelectorAll('.dropdown-menu button').forEach(btn => {
         btn.addEventListener('click', () => {
             const formId = btn.getAttribute('data-form');
-            window.location.href = `/xss/${formId}`;
+            window.location.href = `/${formId}`;
         });
     });
 
-    document.querySelectorAll('.sql-submenu button').forEach(btn => {
+    document.querySelectorAll('.sidebar-nav > button[data-form]').forEach(btn => {
         btn.addEventListener('click', () => {
             const formId = btn.getAttribute('data-form');
-            window.location.href = `/sqli/${formId}`;
+            window.location.href = `/${formId}`;
         });
     });
-
 };
 
 document.addEventListener('DOMContentLoaded', createLayout);
