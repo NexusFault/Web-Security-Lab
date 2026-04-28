@@ -5,56 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reflected XSS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/xss.css') }}">
 </head>
 <body>
     <div id="layout"></div>
     <div class="content">
         <div class="form-container active">
-            <h2>Reflected XSS</h2>
-                <div class="xss-layout">
-                    <div class="left-side">
-                        <form method="GET" action="/xss/reflected">
-                            <div class="form-group">
-                                <label>Search hotels:</label>
-                                <div class="search-box">
-                                    <input 
-                                        type="text" 
-                                        name="search"
-                                        placeholder="Enter the name of the hotel"
-                                    >
-                                    <button type="submit">Search</button>
+            <div class="xss-page">
+                <h2>Reflected XSS</h2>
+                <form method="GET" action="/xss/reflected" class="search-form">
+                    <label>Search hotels:</label>
+                    <div class="input-group">
+                        <input type="text" name="search" placeholder="Enter hotel name">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+                <div class="search-results">
+                    <h3 id="resultTitle">Results for: all</h3>
+                    {% if hotels %}
+                        <div class="hotels-list">
+                            {% for hotel in hotels %}
+                                <div class="hotel-card">
+                                    <h4>{{ hotel.name }}</h4>
+                                    <p>{{ hotel.description }}</p>
+                                    <span>${{ hotel.price }}</span>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                <div class="right-side">
-            <div class="search-result">
-                <h3 id="resultTitle"></h3>
-                {% if hotels %}
-                    <div class="hotels-list">
-                        {% for hotel in hotels %}
-                            <div class="hotel-card">
-                                <h3>{{ hotel.name }}</h3>
-                                <p>{{ hotel.description }}</p>
-                                <span>💰 {{ hotel.price }}$</span>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <p>No hotels found for your search.</p>
-                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="no-results">No hotels found for your search.</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
-
     <script>
-    const params = new URLSearchParams(window.location.search);
-    const search = params.get("search") || "all";
-
-    document.getElementById("resultTitle").innerHTML = 
-        `Results for: ${search}`;
-</script>
+        const params = new URLSearchParams(window.location.search);
+        const search = params.get("search") || "all";
+        document.getElementById("resultTitle").innerHTML = `Results for: ${search}`;
+    </script>
 </body>
 </html>

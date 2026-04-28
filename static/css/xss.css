@@ -1,0 +1,258 @@
+.xss-page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.xss-page h2 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #1abc9c;
+}
+
+.search-form {
+    margin-bottom: 25px;
+}
+
+.search-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.search-form .input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.search-form input:focus {
+    outline: none;
+    border-color: #1abc9c;
+}
+
+.search-form button {
+    padding: 12px 25px;
+    background: #1abc9c;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.search-form button:hover {
+    background: #16a085;
+}
+
+.search-results {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 60px;
+}
+
+.search-results h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.hotels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hotel-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: box-shadow 0.2s;
+}
+
+.hotel-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.hotel-card h4 {
+    font-size: 15px;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.hotel-card p {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.hotel-card span {
+    font-size: 14px;
+    color: #1abc9c;
+    font-weight: 500;
+}
+
+.no-results {
+    color: #95a5a6;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.photo-gallery {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.photo-gallery button {
+    padding: 12px 24px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #2c3e50;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.photo-gallery button:hover,
+.photo-gallery button.active {
+    background: #1abc9c;
+    border-color: #1abc9c;
+    color: #fff;
+}
+
+.photo-output {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.photo-output img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.storage-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+}
+
+.comment-form {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.comment-form h3 {
+    font-size: 15px;
+    color: #2c3e50;
+    margin-bottom: 18px;
+}
+
+.comment-form .form-group {
+    margin-bottom: 15px;
+}
+
+.comment-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2c3e50;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #1abc9c;
+}
+
+.comment-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.comment-form button {
+    padding: 10px 24px;
+    background: #1abc9c;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.comment-form button:hover {
+    background: #16a085;
+}
+
+.comments-section h3 {
+    font-size: 15px;
+    color: #2c3e50;
+    margin-bottom: 18px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.comment-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.comment-text {
+    color: #34495e;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.no-comments {
+    color: #95a5a6;
+    font-size: 14px;
+    font-style: italic;
+}

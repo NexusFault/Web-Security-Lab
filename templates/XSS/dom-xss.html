@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reflected XSS</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    </head>
-    <body>
-        <div id="layout"></div>
-        <div class="content">
-            <div class="form-container active">
-                <h2>Dom XSS</h2>
-                    <div class="button-row">
-                        <button data-image="1" class="button">Photo 1</button>
-                        <button data-image="2" class="button">Photo 2</button>
-                        <button data-image="3" class="button">Photo 3</button>
-                    </div>
-                <div id="output_photo"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM XSS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/xss.css') }}">
+</head>
+<body>
+    <div id="layout"></div>
+    <div class="content">
+        <div class="form-container active">
+            <div class="xss-page">
+                <h2>DOM XSS</h2>
+                <div class="photo-gallery">
+                    <button data-image="1">Photo 1</button>
+                    <button data-image="2">Photo 2</button>
+                    <button data-image="3">Photo 3</button>
+                </div>
+                <div class="photo-output" id="output_photo"></div>
             </div>
         </div>
-    </body>
+    </div>
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
     <script>
+        const outputElement = document.getElementById('output_photo');
+        const buttons = document.querySelectorAll('.photo-gallery button');
 
-    const outputElement = document.querySelector('#output_photo');
-    const buttons = document.querySelectorAll('button[data-image]');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const imageNumber = parseInt(this.dataset.image);
-            window.location.hash = `image_${imageNumber}`;
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const imageNumber = this.dataset.image;
+                window.location.hash = `image_${imageNumber}`;
+            });
         });
-    });
 
-    window.addEventListener('hashchange', function() {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-
-            outputElement.innerHTML = `<img src="/static/images/${decodeURIComponent(hash)}.jpg">`;
+        function updatePhoto() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                outputElement.innerHTML = `<img src="/static/images/${decodeURIComponent(hash)}.jpg" alt="Photo">`;
+            }
         }
-    });
 
-    if (window.location.hash) {
-        const hash = window.location.hash.substring(1);
-        outputElement.innerHTML = `<img src="/static/images/${decodeURIComponent(hash)}.jpg">`;
-    }
-
+        window.addEventListener('hashchange', updatePhoto);
+        updatePhoto();
     </script>
+</body>
 </html>
