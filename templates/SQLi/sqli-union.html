@@ -14,7 +14,7 @@
         <div class="form-container active">
             <div class="sqli-page">
                 <h2>SQLi UNION</h2>
-                <p class="hint">You know that there is another table called "users" in this database. Display it!</p>
+                <p class="hint">You know that there is another table called <strong>"users"</strong> in this database. Display it!</p>
                 <div class="category-tabs">
                     <a href="?category=" class="{{ 'active' if not request.args.get('category') else '' }}">All</a>
                     <a href="?category=fruits" class="{{ 'active' if request.args.get('category') == 'fruits' else '' }}">Fruits</a>
